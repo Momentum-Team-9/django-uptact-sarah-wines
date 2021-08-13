@@ -5,7 +5,7 @@
 
 <div class="flex flex-wrap">
   {% for contact in contacts %}
-  <div class="w-33 pa3">
+  <div class="w-33 pa3 single-contact">
     <h2>{{ contact.name }}</h2>
     <p>Birthday: {{ contact.birthday }}</p>
     <div class="flex">
@@ -13,8 +13,7 @@
       <div>
         {{ contact.address_1 }}<br />
         {% if contact.address_2 %} {{ contact.address_2 }}<br />
-        {% endif %} {{ contact.city }}, {{ contact.state }} {{ contact.zip_code
-        }}
+        {% endif %} {{ contact.city }}, {{ contact.state }} {{contact.zip_code}}
       </div>
     </div>
 
@@ -31,6 +30,7 @@
     {% endif %}
 
     <p>
+      <a href="{% url 'view_contacts' pk=contact.pk %}">View Contact</a><br />
       <a href="{% url 'edit_contact' pk=contact.pk %}">Edit Contact</a><br />
       <a class="red" href="{% url 'delete_contact' pk=contact.pk %}"
         >Delete Contact</a
